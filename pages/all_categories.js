@@ -6,7 +6,7 @@ import { List } from "antd";
 export default function Blog(props) {
   const data = props.categories.map(function (categ, idx) {
     return (
-      <Link href={"/categories/" + categ.category}>
+      <Link href={"/categories/" + categ.category} key={idx}>
         <a className="link-a">{categ.title}</a>
       </Link>
     );
