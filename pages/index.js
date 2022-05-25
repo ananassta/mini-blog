@@ -28,6 +28,20 @@ export default function Blog(props) {
 export async function getStaticProps() {
   const config = await getConfig();
   const allPosts = await getAllPosts();
+  // const allPostsInOne = await import('../_posts/posts.json');
+  // const posts = []
+  // for (let i = 0; i < allPostsInOne.length; i++) {
+  //   posts.push({
+  //     id: i+1,
+  //     title: allPostsInOne[i].title,
+  //     content: allPostsInOne[i].content,
+  //     category: allPostsInOne[i].category,
+  //     tags: allPostsInOne[i].tags
+  //   })
+  // }
+  // console.log(posts);
+
+  
 
   return {
     props: {
