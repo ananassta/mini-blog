@@ -82,12 +82,12 @@ export async function getAllCategories(){
 export async function getAllCategoriesForCategory(){
     const fs = require("fs")
     const path = require("path");
-    const arrayOfFiles = fs.readdirSync(path.resolve(__dirname, "../../../../_posts"))
+    const arrayOfFiles = fs.readdirSync(path.resolve(__dirname, "../../_posts"))
 
     let categories = []
     for (let i = 0; i < arrayOfFiles.length; i++) {
 
-        const article  = JSON.parse(fs.readFileSync(path.resolve(__dirname, "../../../../_posts/" + arrayOfFiles[i]), 'utf8'));
+        const article  = JSON.parse(fs.readFileSync(path.resolve(__dirname, "../../_posts/" + arrayOfFiles[i]), 'utf8'));
 
         const category = article.category
 
