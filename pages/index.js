@@ -1,66 +1,39 @@
-// import DefaultLayout from "../_layouts/default.js";
-// import Link from "next/link";
-// import { getConfig, getAllPosts } from "./api";
+import DefaultLayout from "../_layouts/default.js";
+import Link from "next/link";
+import { getConfig, getAllPosts } from "./api";
+import { List } from "antd";
 
-// export default function Blog(props) {
-//   return (
-//     <DefaultLayout title={props.title} description={props.description}>
-//       <p>List of all posts:</p>
-//       <ul>
-//         {props.posts.map(function (post, idx) {
-//           return (
-//             <li key={idx}>
-//               <Link href={"/" + post.slug}>
-//               {/* <Link href={"/posts/" + post.slug}> */}
-//                 <a>{post.title}</a>
-//               </Link>
-//             </li>
-//           );
-//         })}
-//       </ul>
-//       <Link href="./all_categories">
-//         <a>All categories</a>
-//       </Link>
-//       <Link href="./search">
-//       <a>Search</a>
-//       </Link>
-//     </DefaultLayout>
-//   );
-// }
-
-// export async function getStaticProps() {
-//   const config = await getConfig();
-//   // console.log('1');
-//   const allPosts = await getAllPosts();
-//   // console.log(config);
-
-//   return {
-//     props: {
-//       posts: allPosts,
-//       title: config.title,
-//       description: config.description,
-//     },
-//   };
-// }
-
-import { DatePicker } from "../node_modules/antd";
-import React, {useRef, useEffect, useState} from "../node_modules/react";
-export default function Home(){
-  // const navRef = useRef(null);
-  // const [refVisible, setRefVisible] = useState(false);
-
-  // useEffect(() => {
-  // if (!refVisible) {
-  // return
-  // }
-  // // detected rendering
-  // }, refVisible);
+export default function Blog(props) {
+  const data = props.posts.map(function (post, idx) {
+    return (
+        <Link href={"/" + post.slug}>
+          <a className="link-a">{post.title}</a>
+        </Link>
+    );
+  })
   return (
-        // <div ref={navRef}>
-    // <DatePicker ref={navRef}/>
-    <div>
-      <DatePicker/>
-
-    </div>
+    <DefaultLayout title={props.title} description={props.description} page="posts">
+      <p></p>
+      <h1 style={{textAlign: "center"}}>List of all posts:</h1>
+      <p></p>
+      <List 
+      size="large"
+      dataSource={data}
+      renderItem={item => <List.Item style={{justifyContent:"center"}}>{item}</List.Item>}
+      />
+    </DefaultLayout>
   );
+}
+
+export async function getStaticProps() {
+  const config = await getConfig();
+  const allPosts = await getAllPosts();
+
+  return {
+    props: {
+      posts: allPosts,
+      title: config.title,
+      description: config.description,
+    },
+  };
 }

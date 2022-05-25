@@ -1,20 +1,20 @@
 import DefaultLayout from "../_layouts/default.js";
 import Link from "next/link";
-import { getConfig, getAllCategories } from "./api";
+import { getConfig, getAllTags } from "./api";
 import { List } from "antd";
 
 export default function Blog(props) {
-  const data = props.categories.map(function (categ, idx) {
+  const data = props.tags.map(function (tag, idx) {
     return (
-      <Link href={"/categories/" + categ.category}>
-        <a className="link-a">{categ.title}</a>
+      <Link href={"/tags/" + tag.tag}>
+        <a className="link-a">{tag.title}</a>
       </Link>
     );
   })
   return (
-    <DefaultLayout title={props.title} description={props.description} page="categories">
+    <DefaultLayout title={props.title} description={props.description} page="tags">
       <p></p>
-      <h1 style={{textAlign: "center"}}>List of all categories:</h1>
+      <h1 style={{textAlign: "center"}}>List of all tags:</h1>
       <p></p>
       <List 
       size="large"
@@ -27,11 +27,11 @@ export default function Blog(props) {
 
 export async function getStaticProps() {
   const config = await getConfig();
-  const allCategories = await getAllCategories();
+  const allTags = await getAllTags();
 
   return {
     props: {
-      categories: allCategories,
+      tags: allTags,
       title: config.title,
       description: config.description,
     },

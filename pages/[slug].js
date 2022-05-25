@@ -2,7 +2,7 @@ import PostLayout from "../_layouts/post";
 import { getPostBySlug, getAllPosts } from "./api";
 
 export default function Post(props) {
-  return <PostLayout title={props.title} content={props.content} />;
+  return <PostLayout title={props.title} content={props.content} category={props.category} tags={props.tags}/>;
 }
 
 export async function getStaticProps(context) {

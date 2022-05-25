@@ -1,18 +1,27 @@
-import Head from 'next/head'
-import Layout, { siteTitle } from '../components/layout'
 import Search from '../components/search'
-// import utilStyles from '../styles/utils.module.css'
+import DefaultLayout from "../_layouts/default.js";
+import { getConfig } from './api';
 
-export default function Home() {
+export default function Home(props) {
   return (
-    <Layout home>
-      <Head>
-        <title>{siteTitle}</title>
-      </Head>
-      <section>
+    <DefaultLayout title={props.title} description={props.description} page="search">
+      <p></p>
+      <section style={{textAlign: "center"}}>
         <h2>Search</h2>
+        <p></p>
         <Search />
       </section>
-    </Layout>
+    </DefaultLayout>
   )
+}
+
+export async function getStaticProps() {
+  const config = await getConfig();
+
+  return {
+    props: {
+      title: config.title,
+      description: config.description,
+    },
+  };
 }
