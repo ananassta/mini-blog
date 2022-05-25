@@ -194,12 +194,12 @@ export async function getAllTags(){
 export async function getAllTagsForTag(){
     const fs = require("fs")
     const path = require("path");
-    const arrayOfFiles = fs.readdirSync(path.resolve(__dirname, "../../../../_posts"))
+    const arrayOfFiles = fs.readdirSync(path.resolve(__dirname, "../../_posts"))
 
     let tags = []
     for (let i = 0; i < arrayOfFiles.length; i++) {
 
-        const article  = JSON.parse(fs.readFileSync(path.resolve(__dirname, "../../../../_posts/" + arrayOfFiles[i]), 'utf8'));
+        const article  = JSON.parse(fs.readFileSync(path.resolve(__dirname, "../../_posts/" + arrayOfFiles[i]), 'utf8'));
 
         const tag = article.tags
         for (let j = 0; j < tag.length; j++){
