@@ -6,7 +6,7 @@ import { List } from "antd";
 export default function Blog(props) {
   const data = props.posts.map(function (post, idx) {
     return (
-        <Link href={"/" + post.slug}>
+        <Link href={"/" + post.slug} key={idx}>
           <a className="link-a">{post.title}</a>
         </Link>
     );
@@ -14,7 +14,7 @@ export default function Blog(props) {
   return (
     <DefaultLayout title={props.title} description={props.description}>
       <p></p>
-      <h1 style={{textAlign: "center"}}>List of all posts with tag "{props.tag}":</h1>
+      <h1 style={{textAlign: "center"}}>List of all posts with tag &quot;{props.tag}&quot;:</h1>
       <p></p>
       <List 
       size="large"
