@@ -6,7 +6,7 @@ import { List } from "antd";
 export default function Blog(props) {
   const data = props.posts.map(function (post, idx) {
     return (
-        <Link href={"/" + post.slug}>
+        <Link href={"/" + post.slug} key={idx}>
           <a className="link-a">{post.title}</a>
         </Link>
     );
