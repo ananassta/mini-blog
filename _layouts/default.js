@@ -41,7 +41,7 @@ export default function DefaultLayout(props) {
         </div>
         <p style={{height: '8px'}}></p>
       </Content>
-      <Footer style={{textAlign: 'center', backgroundColor: "#f0f2f5"}}>Bartashuk Anastasiya | 2022 <p style={{fontSize:"10px", color:"gray"}}>p.s.: it may take a few seconds to load some pages</p></Footer>
+      <Footer style={{textAlign: 'center', backgroundColor: "#f0f2f5"}}>Bartashuk Anastasiya | 2022</Footer>
     </Layout>
     </div>
     </main>
