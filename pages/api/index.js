@@ -22,14 +22,14 @@ export async function getAllPostsFiltered() {
         allPostsData.push({slug: allPostsInOne[i].id, title: allPostsInOne[i].title});
     }
     // console.log(allPostsData)
-    let c =  allPostsData.sort((a, b) => {
-        if (a.date < b.date) {
+    let c =  allPostsData.sort((b, a) => {
+        if (a.title < b.title) {
         return 1;
         } else {
         return -1;
         }
     })
-    // console.log(c);
+    console.log(c);
     return c;
 }
 
