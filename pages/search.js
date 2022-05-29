@@ -1,6 +1,6 @@
 import Search from '../components/search'
 import DefaultLayout from "../_layouts/default.js";
-import { getConfig } from './api';
+import { getAllPostsFiltered, getConfig } from './api';
 
 export default function Home(props) {
   return (
@@ -9,7 +9,7 @@ export default function Home(props) {
       <section style={{textAlign: "center"}}>
         <h2>Search</h2>
         <p></p>
-        <Search />
+        <Search posts_list={props.posts_list}/>
       </section>
     </DefaultLayout>
   )
@@ -17,11 +17,13 @@ export default function Home(props) {
 
 export async function getStaticProps() {
   const config = await getConfig();
+  const posts_list = await getAllPostsFiltered();
 
   return {
     props: {
       title: config.title,
       description: config.description,
+      posts_list: posts_list
     },
   };
 }
